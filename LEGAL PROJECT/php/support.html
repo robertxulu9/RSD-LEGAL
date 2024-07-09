@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+
+</head>
+<body>
+    <div class="container">
+        <div class="text-center">
+            <h2>Get in touch</h2>
+            <p class="lead">Help us help you</p>
+        </div>
+        <div class="row justify-content-center my-5">
+            <div class="col-lg-6">
+                <form action="">
+                    <label for="email" class="form-label">Email:</label>
+                    <input 
+                    type="email"
+                    id="email"
+                    placeholder="my@example.com"
+                    class="form-control"
+                    >
+
+                    <label for="name" class="form-label">Name:</label>
+                    <input 
+                    type="name"
+                    id="name"
+                    placeholder="e.g. Robert Zulu"
+                    class="form-control"
+                    >
+                    <label for="subject" class="form=label">Subject:</label>
+                    <select name="subject" id="subject" class="form-select my-4">
+                        <option value="payments">Payments</option>
+                        <option value="technical" selected>Technical question</option>
+                        <option value="other">Other</option> 
+                    </select>
+
+                    <div class="form-floating">
+                        <textarea name="query" id="query" cols="70" rows="10" placeholder="  Your massage "></textarea>
+                        
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Send</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    
+
+    <script src="Js/bootstrap.bundle.js"></script>   
+
+</body>
+</html>

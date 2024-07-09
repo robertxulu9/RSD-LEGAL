@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tasks</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+</head>
+<body>
+    
+    <div id="main_content" class="pb-5 main-content">
+      
+        <div id="new-tasks-tab" data-rows-per-page="10" data-user-time-zone="Pacific/Honolulu" data-can-view-tasks="true"
+            data-filters="{&quot;assignee_id&quot;:&quot;44846905&quot;,&quot;court_case&quot;:{&quot;id&quot;:&quot;&quot;,&quot;name&quot;:&quot;&quot;},&quot;status&quot;:&quot;Incomplete&quot;,&quot;sort_by&quot;:&quot;date&quot;,&quot;sort_direction&quot;:&quot;asc&quot;}"
+            data-leads-enabled="true">
+            <div class="d-flex flex-column">
+                <div class="d-flex align-items-center">
+                    <h3 class="my-0 me-1 fw-bold"><i class="fas fa-clipboard-check fa-sm me-2"></i>Tasks</h3>
+                    <h5 class="d-none d-print-inline mt-2 fw-bold text-muted">&nbsp;as of today 11/13/2023</h5>
+                    <div class="ms-auto d-flex d-print-none"><button type="button"
+                            class="feedback-button text-dark d-print-none me-2 btn btn-link">Tell us what you
+                            think</button><span class="mt-3 text-muted">|</span>
+                        <div><button type="button" class="me-2 btn btn-link">Mark all as read</button><button type="button"
+                                data-testid="print-tasks-button" class="p-1 me-2 text-black-50 btn btn-link"><i
+                                    class="fas fa-print"></i></button>
+                            <div class="m-2 d-print-none btn-group"><button title="Export Report" id="export-report-toggle"
+                                    aria-haspopup="true" class="btn text-muted shadow-none dropdown-toggle"
+                                    aria-expanded="false"><i class="fas fa-file-download"></i></button>
+                                <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-end">
+                                    <button type="button" tabindex="0" role="menuitem" class="dropdown-item">as CSV</button>
+                                </div>
+                            </div>
+                            <div id="bulk-dropdown" class="me-2 actions-button btn-group">
+                                <div class="mx-2"><button type="button" disabled="" aria-haspopup="true" aria-expanded="false"
+                                        class="dropdown-toggle btn btn-secondary disabled">Actions</button></div>
+                                <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-end">
+                                    <div id="tooltip-wrapper"><button type="button" tabindex="0" role="menuitem"
+                                            class="bulk-mark-tasks-as-read dropdown-item"><span>Mark as
+                                                read</span></button><button type="button" tabindex="0" role="menuitem"
+                                            class="bulk-mark-tasks-as-complete dropdown-item"><span>Mark as
+                                                completed</span></button><button type="button" tabindex="0" role="menuitem"
+                                            class="bulk-mark-tasks-as-complete dropdown-item">Change due date</button><button
+                                            type="button" tabindex="0" role="menuitem"
+                                            class="bulk-reassign-tasks dropdown-item">Reassign tasks</button></div>
+                                </div>
+                            </div><button type="button" class="btn btn-cta-primary">Add Task</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="filter-tasks-container my-2">
+                    <div class="row ">
+                        <div class="col-6 col-md-4 col-lg-2"><label for="assigned-to-select">Assigned To</label>
+                            <div>
+                                <div class="Select p-0 test-assigned-to-filter has-value is-searchable Select--single">
+                                    <div class="Select-control"><span class="Select-multi-value-wrapper"
+                                            id="react-select-2--value">
+                                            <div class="Select-value"><span class="Select-value-label" role="option"
+                                                    aria-selected="true" id="react-select-2--value-item">Me</span></div>
+                                            <div class="Select-input" style="display: inline-block;"><input
+                                                    id="assigned-to-select" aria-activedescendant="react-select-2--value"
+                                                    aria-expanded="false" aria-haspopup="false" aria-owns="" role="combobox"
+                                                    value="" style="box-sizing: content-box; width: 5px;"
+                                                    data-listener-added_ed719617="true">
+                                                <div
+                                                    style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-size: 13px; font-family: neue-haas-grotesk-text, &quot;Helvetica Neue&quot;, -apple-system, BlinkMacSystemFont, Roboto, Arial, sans-serif; font-weight: 400; font-style: normal; letter-spacing: normal; text-transform: none;">
+                                                </div>
+                                            </div>
+                                        </span><span class="Select-arrow-zone"><i aria-hidden="true"
+                                                class="fa-solid fa-caret-down"></i></span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-4 col-lg-2"><label for="completion-status-select">Completion Status</label>
+                            <div class="Select test-completion-status-filter has-value is-searchable Select--single">
+                                <div class="Select-control"><span class="Select-multi-value-wrapper" id="react-select-3--value">
+                                        <div class="Select-value"><span class="Select-value-label" role="option"
+                                                aria-selected="true" id="react-select-3--value-item"><i
+                                                    class="fas fa-check fa-sm text-black-50 opacity-50 me-1"></i>Incomplete</span>
+                                        </div>
+                                        <div class="Select-input" style="display: inline-block;"><input
+                                                id="completion-status-select" aria-activedescendant="react-select-3--value"
+                                                aria-expanded="false" aria-haspopup="false" aria-owns="" role="combobox"
+                                                value="" style="box-sizing: content-box; width: 5px;">
+                                            <div
+                                                style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-size: 13px; font-family: neue-haas-grotesk-text, &quot;Helvetica Neue&quot;, -apple-system, BlinkMacSystemFont, Roboto, Arial, sans-serif; font-weight: 400; font-style: normal; letter-spacing: normal; text-transform: none;">
+                                            </div>
+                                        </div>
+                                    </span><span class="Select-arrow-zone"><i aria-hidden="true"
+                                            class="fa-solid fa-caret-down"></i></span></div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-4 col-lg-2"><label for="case-lead-select">By Case / Lead</label>
+                            <div
+                                class="Select test-case-lead-filter select-async has-value is-clearable is-searchable Select--single">
+                                <div class="Select-control"><span class="Select-multi-value-wrapper" id="react-select-4--value">
+                                        <div class="Select-value"><span class="Select-value-label" role="option"
+                                                aria-selected="true" id="react-select-4--value-item"></span></div>
+                                        <div class="Select-input" style="display: inline-block;"><input id="case-lead-select"
+                                                aria-activedescendant="react-select-4--value" aria-expanded="false"
+                                                aria-haspopup="false" aria-owns="" role="combobox" value=""
+                                                style="box-sizing: content-box; width: 5px;">
+                                            <div
+                                                style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-size: 13px; font-family: neue-haas-grotesk-text, &quot;Helvetica Neue&quot;, -apple-system, BlinkMacSystemFont, Roboto, Arial, sans-serif; font-weight: 400; font-style: normal; letter-spacing: normal; text-transform: none;">
+                                            </div>
+                                        </div>
+                                    </span><span aria-label="Clear value" class="Select-clear-zone" title="Clear value"><button
+                                            type="button" class="btn-close d-flex" aria-label="Close" tabindex="-1"
+                                            style="font-size: 0.5rem;"></button></span><span class="Select-arrow-zone"><i
+                                            aria-hidden="true" class="fa-solid fa-caret-down"></i></span></div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-4 col-lg-2"><label for="task-filter-by-due-date-select">Due Date</label>
+                            <div id="task-filter-by-due-date-select" class="date-range-filter-dropdown dropdown"><button
+                                    type="button" aria-haspopup="true" aria-expanded="false"
+                                    class="date-range-filter-toggle d-flex align-items-center justify-content-between w-100 rounded px-2 btn btn-secondary"
+                                    style="height: 2.35rem;">
+                                    <div class="text-truncate me-2">All time</div><i class="fas fa-caret-down"></i>
+                                </button>
+                                <div tabindex="-1" role="menu" aria-hidden="true" class="py-0 dropdown-menu">
+                                    <div class="d-flex flex-row">
+                                        <div class="preset-date-range-options d-flex flex-column m-3"><button
+                                                class="btn btn-link p-1 text-start text-nowrap">All time</button><button
+                                                class="btn btn-link p-1 text-start text-nowrap">Last 7 days</button><button
+                                                class="btn btn-link p-1 text-start text-nowrap">Last 30 days</button><button
+                                                class="btn btn-link p-1 text-start text-nowrap">Last 90 days</button><button
+                                                class="btn btn-link p-1 text-start text-nowrap">Last year</button><button
+                                                class="btn btn-link p-1 text-start text-nowrap">Month to date</button><button
+                                                class="btn btn-link p-1 text-start text-nowrap">Year to date</button></div>
+                                        <div class="date-range-filter-divider 'me-2'"
+                                            style="border-right: 1px solid rgb(233, 236, 239);"></div>
+                                        <div class="date-range-pickers d-flex flex-column m-3 justify-content-around">
+                                            <div class="start-date-picker null"><span>Start Date</span>
+                                                <div>
+                                                    <div class="dropdown">
+                                                        <div disabled="" aria-haspopup="true" class="" aria-expanded="false">
+                                                            <div
+                                                                class="d-flex flex-row flex-nowrap selenium-start-date input-group">
+                                                                <input class="form-control" type="text" value="11/13/2023"
+                                                                    style="width: 110px;"><button type="button" tabindex="-1"
+                                                                    class="px-2 btn btn-secondary"><i aria-hidden="true"
+                                                                        class="fa-regular fa-calendar fa-fw"></i><span
+                                                                        class="visually-hidden">Open Calendar</span></button>
+                                                            </div>
+                                                        </div>
+                                                        <div tabindex="-1" role="menu" aria-hidden="true"
+                                                            class="p-0 dropdown-menu">
+                                                            <header class="d-flex py-2">
+                                                                <div role="group" class="btn-group-sm btn-group"><button
+                                                                        type="button" class="js-prev-year btn btn-link"><i
+                                                                            aria-hidden="true"
+                                                                            class="fa-solid fa-angle-double-left fa-fw"></i><span
+                                                                            class="visually-hidden">Previous
+                                                                            Year</span></button><button type="button"
+                                                                        class="js-prev-month btn btn-link"><i aria-hidden="true"
+                                                                            class="fa-solid fa-angle-left fa-fw"></i><span
+                                                                            class="visually-hidden">Previous
+                                                                            Month</span></button></div><span
+                                                                    class="js-date-header m-auto">November 2023</span>
+                                                                <div role="group" class="btn-group-sm btn-group"><button
+                                                                        type="button" class="js-next-month btn btn-link"><i
+                                                                            aria-hidden="true"
+                                                                            class="fa-solid fa-angle-right fa-fw"></i><span
+                                                                            class="visually-hidden">Next
+                                                                            Month</span></button><button type="button"
+                                                                        class="js-next-year btn btn-link"><i aria-hidden="true"
+                                                                            class="fa-solid fa-angle-double-right fa-fw"></i><span
+                                                                            class="visually-hidden">Next Year</span></button>
+                                                                </div>
+                                                            </header>
+                                                            <div class="table-responsive">
+                                                                <table class="m-0 table table-sm" style="min-width: 19rem;">
+                                                                    <colgroup>
+                                                                        <col style="width: 14.29%;">
+                                                                        <col style="width: 14.29%;">
+                                                                        <col style="width: 14.29%;">
+                                                                        <col style="width: 14.29%;">
+                                                                        <col style="width: 14.29%;">
+                                                                        <col style="width: 14.29%;">
+                                                                        <col style="width: 14.29%;">
+                                                                    </colgroup>
+                                                                    <thead>
+                                                                        <tr class="js-calendar-weekdays">
+                                                                            <th class="text-center">Su</th>
+                                                                            <th class="text-center">Mo</th>
+                                                                            <th class="text-center">Tu</th>
+                                                                            <th class="text-center">We</th>
+                                                                            <th class="text-center">Th</th>
+                                                                            <th class="text-center">Fr</th>
+                                                                            <th class="text-center">Sa</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td role="button" data-testid="day-Sun Oct 29 2023"
+                                                                                class="jsx-2353834249 text-center bg-light text-muted">
+                                                                                29</td>
+                                                                            <td role="button" data-testid="day-Mon Oct 30 2023"
+                                                                                class="jsx-2353834249 text-center bg-light text-muted">
+                                                                                30</td>
+                                                                            <td role="button" data-testid="day-Tue Oct 31 2023"
+                                                                                class="jsx-2353834249 text-center bg-light text-muted">
+                                                                                31</td>
+                                                                            <td role="button" data-testid="day-Wed Nov 01 2023"
+                                                                                class="jsx-2353834249 text-center">1</td>
+                                                                            <td role="button" data-testid="day-Thu Nov 02 2023"
+                                                                                class="jsx-2353834249 text-center">2</td>
+                                                                            <td role="button" data-testid="day-Fri Nov 03 2023"
+                                                                                class="jsx-2353834249 text-center">3</td>
+                                                                            <td role="button" data-testid="day-Sat Nov 04 2023"
+                                                                                class="jsx-2353834249 text-center">4</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td role="button" data-testid="day-Sun Nov 05 2023"
+                                                                                class="jsx-2353834249 text-center">5</td>
+                                                                            <td role="button" data-testid="day-Mon Nov 06 2023"
+                                                                                class="jsx-2353834249 text-center">6</td>
+                                                                            <td role="button" data-testid="day-Tue Nov 07 2023"
+                                                                                class="jsx-2353834249 text-center">7</td>
+                                                                            <td role="button" data-testid="day-Wed Nov 08 2023"
+                                                                                class="jsx-2353834249 text-center">8</td>
+                                                                            <td role="button" data-testid="day-Thu Nov 09 2023"
+                                                                                class="jsx-2353834249 text-center">9</td>
+                                                                            <td role="button" data-testid="day-Fri Nov 10 2023"
+                                                                                class="jsx-2353834249 text-center">10</td>
+                                                                            <td role="button" data-testid="day-Sat Nov 11 2023"
+                                                                                class="jsx-2353834249 text-center">11</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td role="button" data-testid="day-Sun Nov 12 2023"
+                                                                                class="jsx-2353834249 text-center">12</td>
+                                                                            <td role="button" data-testid="day-Mon Nov 13 2023"
+                                                                                class="jsx-2353834249 text-center bg-primary text-white">
+                                                                                13</td>
+                                                                            <td role="button" data-testid="day-Tue Nov 14 2023"
+                                                                                class="jsx-2353834249 text-center">14</td>
+                                                                            <td role="button" data-testid="day-Wed Nov 15 2023"
+                                                                                class="jsx-2353834249 text-center">15</td>
+                                                                            <td role="button" data-testid="day-Thu Nov 16 2023"
+                                                                                class="jsx-2353834249 text-center">16</td>
+                                                                            <td role="button" data-testid="day-Fri Nov 17 2023"
+                                                                                class="jsx-2353834249 text-center">17</td>
+                                                                            <td role="button" data-testid="day-Sat Nov 18 2023"
+                                                                                class="jsx-2353834249 text-center">18</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td role="button" data-testid="day-Sun Nov 19 2023"
+                                                                                class="jsx-2353834249 text-center">19</td>
+                                                                            <td role="button" data-testid="day-Mon Nov 20 2023"
+                                                                                class="jsx-2353834249 text-center">20</td>
+                                                                            <td role="button" data-testid="day-Tue Nov 21 2023"
+                                                                                class="jsx-2353834249 text-center">21</td>
+                                                                            <td role="button" data-testid="day-Wed Nov 22 2023"
+                                                                                class="jsx-2353834249 text-center">22</td>
+                                                                            <td role="button" data-testid="day-Thu Nov 23 2023"
+                                                                                class="jsx-2353834249 text-center">23</td>
+                                                                            <td role="button" data-testid="day-Fri Nov 24 2023"
+                                                                                class="jsx-2353834249 text-center">24</td>
+                                                                            <td role="button" data-testid="day-Sat Nov 25 2023"
+                                                                                class="jsx-2353834249 text-center">25</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td role="button" data-testid="day-Sun Nov 26 2023"
+                                                                                class="jsx-2353834249 text-center">26</td>
+                                                                            <td role="button" data-testid="day-Mon Nov 27 2023"
+                                                                                class="jsx-2353834249 text-center">27</td>
+                                                                            <td role="button" data-testid="day-Tue Nov 28 2023"
+                                                                                class="jsx-2353834249 text-center">28</td>
+                                                                            <td role="button" data-testid="day-Wed Nov 29 2023"
+                                                                                class="jsx-2353834249 text-center">29</td>
+                                                                            <td role="button" data-testid="day-Thu Nov 30 2023"
+                                                                                class="jsx-2353834249 text-center">30</td>
+                                                                            <td role="button" data-testid="day-Fri Dec 01 2023"
+                                                                                class="jsx-2353834249 text-center bg-light text-muted">
+                                                                                1</td>
+                                                                            <td role="button" data-testid="day-Sat Dec 02 2023"
+                                                                                class="jsx-2353834249 text-center bg-light text-muted">
+                                                                                2</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td role="button" data-testid="day-Sun Dec 03 2023"
+                                                                                class="jsx-2353834249 text-center bg-light text-muted">
+                                                                                3</td>
+                                                                            <td role="button" data-testid="day-Mon Dec 04 2023"
+                                                                                class="jsx-2353834249 text-center bg-light text-muted">
+                                                                                4</td>
+                                                                            <td role="button" data-testid="day-Tue Dec 05 2023"
+                                                                                class="jsx-2353834249 text-center bg-light text-muted">
+                                                                                5</td>
+                                                                            <td role="button" data-testid="day-Wed Dec 06 2023"
+                                                                                class="jsx-2353834249 text-center bg-light text-muted">
+                                                                                6</td>
+                                                                            <td role="button" data-testid="day-Thu Dec 07 2023"
+                                                                                class="jsx-2353834249 text-center bg-light text-muted">
+                                                                                7</td>
+                                                                            <td role="button" data-testid="day-Fri Dec 08 2023"
+                                                                                class="jsx-2353834249 text-center bg-light text-muted">
+                                                                                8</td>
+                                                                            <td role="button" data-testid="day-Sat Dec 09 2023"
+                                                                                class="jsx-2353834249 text-center bg-light text-muted">
+                                                                                9</td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                            <footer class="text-center pb-2 pt-1">
+                                                                <div><button type="button"
+                                                                        class="me-2 btn btn-secondary">Today</button><button
+                                                                        type="button"
+                                                                        class="me-2 btn btn-secondary">Clear</button></div>
+                                                            </footer>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="end-date-picker mt-2 null"><span>End Date</span>
+                                                <div>
+                                                    <div class="dropdown">
+                                                        <div disabled="" aria-haspopup="true" class="" aria-expanded="false">
+                                                            <div
+                                                                class="d-flex flex-row flex-nowrap selenium-end-date input-group">
+                                                                <input class="form-control" type="text" value="11/13/2023"
+                                                                    style="width: 110px;"><button type="button" tabindex="-1"
+                                                                    class="px-2 btn btn-secondary"><i aria-hidden="true"
+                                                                        class="fa-regular fa-calendar fa-fw"></i><span
+                                                                        class="visually-hidden">Open Calendar</span></button>
+                                                            </div>
+                                                        </div>
+                                                        <div tabindex="-1" role="menu" aria-hidden="true"
+                                                            class="p-0 dropdown-menu">
+                                                            <header class="d-flex py-2">
+                                                                <div role="group" class="btn-group-sm btn-group"><button
+                                                                        type="button" class="js-prev-year btn btn-link"><i
+                                                                            aria-hidden="true"
+                                                                            class="fa-solid fa-angle-double-left fa-fw"></i><span
+                                                                            class="visually-hidden">Previous
+                                                                            Year</span></button><button type="button"
+                                                                        class="js-prev-month btn btn-link"><i aria-hidden="true"
+                                                                            class="fa-solid fa-angle-left fa-fw"></i><span
+                                                                            class="visually-hidden">Previous
+                                                                            Month</span></button></div><span
+                                                                    class="js-date-header m-auto">November 2023</span>
+                                                                <div role="group" class="btn-group-sm btn-group"><button
+                                                                        type="button" class="js-next-month btn btn-link"><i
+                                                                            aria-hidden="true"
+                                                                            class="fa-solid fa-angle-right fa-fw"></i><span
+                                                                            class="visually-hidden">Next
+                                                                            Month</span></button><button type="button"
+                                                                        class="js-next-year btn btn-link"><i aria-hidden="true"
+                                                                            class="fa-solid fa-angle-double-right fa-fw"></i><span
+                                                                            class="visually-hidden">Next Year</span></button>
+                                                                </div>
+                                                            </header>
+                                                            <div class="table-responsive">
+                                                                <table class="m-0 table table-sm" style="min-width: 19rem;">
+                                                                    <colgroup>
+                                                                        <col style="width: 14.29%;">
+                                                                        <col style="width: 14.29%;">
+                                                                        <col style="width: 14.29%;">
+                                                                        <col style="width: 14.29%;">
+                                                                        <col style="width: 14.29%;">
+                                                                        <col style="width: 14.29%;">
+                                                                        <col style="width: 14.29%;">
+                                                                    </colgroup>
+                                                                    <thead>
+                                                                        <tr class="js-calendar-weekdays">
+                                                                            <th class="text-center">Su</th>
+                                                                            <th class="text-center">Mo</th>
+                                                                            <th class="text-center">Tu</th>
+                                                                            <th class="text-center">We</th>
+                                                                            <th class="text-center">Th</th>
+                                                                            <th class="text-center">Fr</th>
+                                                                            <th class="text-center">Sa</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td role="button" data-testid="day-Sun Oct 29 2023"
+                                                                                class="jsx-2353834249 text-center bg-light text-muted">
+                                                                                29</td>
+                                                                            <td role="button" data-testid="day-Mon Oct 30 2023"
+                                                                                class="jsx-2353834249 text-center bg-light text-muted">
+                                                                                30</td>
+                                                                            <td role="button" data-testid="day-Tue Oct 31 2023"
+                                                                                class="jsx-2353834249 text-center bg-light text-muted">
+                                                                                31</td>
+                                                                            <td role="button" data-testid="day-Wed Nov 01 2023"
+                                                                                class="jsx-2353834249 text-center">1</td>
+                                                                            <td role="button" data-testid="day-Thu Nov 02 2023"
+                                                                                class="jsx-2353834249 text-center">2</td>
+                                                                            <td role="button" data-testid="day-Fri Nov 03 2023"
+                                                                                class="jsx-2353834249 text-center">3</td>
+                                                                            <td role="button" data-testid="day-Sat Nov 04 2023"
+                                                                                class="jsx-2353834249 text-center">4</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td role="button" data-testid="day-Sun Nov 05 2023"
+                                                                                class="jsx-2353834249 text-center">5</td>
+                                                                            <td role="button" data-testid="day-Mon Nov 06 2023"
+                                                                                class="jsx-2353834249 text-center">6</td>
+                                                                            <td role="button" data-testid="day-Tue Nov 07 2023"
+                                                                                class="jsx-2353834249 text-center">7</td>
+                                                                            <td role="button" data-testid="day-Wed Nov 08 2023"
+                                                                                class="jsx-2353834249 text-center">8</td>
+                                                                            <td role="button" data-testid="day-Thu Nov 09 2023"
+                                                                                class="jsx-2353834249 text-center">9</td>
+                                                                            <td role="button" data-testid="day-Fri Nov 10 2023"
+                                                                                class="jsx-2353834249 text-center">10</td>
+                                                                            <td role="button" data-testid="day-Sat Nov 11 2023"
+                                                                                class="jsx-2353834249 text-center">11</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td role="button" data-testid="day-Sun Nov 12 2023"
+                                                                                class="jsx-2353834249 text-center">12</td>
+                                                                            <td role="button" data-testid="day-Mon Nov 13 2023"
+                                                                                class="jsx-2353834249 text-center bg-primary text-white">
+                                                                                13</td>
+                                                                            <td role="button" data-testid="day-Tue Nov 14 2023"
+                                                                                class="jsx-2353834249 text-center">14</td>
+                                                                            <td role="button" data-testid="day-Wed Nov 15 2023"
+                                                                                class="jsx-2353834249 text-center">15</td>
+                                                                            <td role="button" data-testid="day-Thu Nov 16 2023"
+                                                                                class="jsx-2353834249 text-center">16</td>
+                                                                            <td role="button" data-testid="day-Fri Nov 17 2023"
+                                                                                class="jsx-2353834249 text-center">17</td>
+                                                                            <td role="button" data-testid="day-Sat Nov 18 2023"
+                                                                                class="jsx-2353834249 text-center">18</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td role="button" data-testid="day-Sun Nov 19 2023"
+                                                                                class="jsx-2353834249 text-center">19</td>
+                                                                            <td role="button" data-testid="day-Mon Nov 20 2023"
+                                                                                class="jsx-2353834249 text-center">20</td>
+                                                                            <td role="button" data-testid="day-Tue Nov 21 2023"
+                                                                                class="jsx-2353834249 text-center">21</td>
+                                                                            <td role="button" data-testid="day-Wed Nov 22 2023"
+                                                                                class="jsx-2353834249 text-center">22</td>
+                                                                            <td role="button" data-testid="day-Thu Nov 23 2023"
+                                                                                class="jsx-2353834249 text-center">23</td>
+                                                                            <td role="button" data-testid="day-Fri Nov 24 2023"
+                                                                                class="jsx-2353834249 text-center">24</td>
+                                                                            <td role="button" data-testid="day-Sat Nov 25 2023"
+                                                                                class="jsx-2353834249 text-center">25</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td role="button" data-testid="day-Sun Nov 26 2023"
+                                                                                class="jsx-2353834249 text-center">26</td>
+                                                                            <td role="button" data-testid="day-Mon Nov 27 2023"
+                                                                                class="jsx-2353834249 text-center">27</td>
+                                                                            <td role="button" data-testid="day-Tue Nov 28 2023"
+                                                                                class="jsx-2353834249 text-center">28</td>
+                                                                            <td role="button" data-testid="day-Wed Nov 29 2023"
+                                                                                class="jsx-2353834249 text-center">29</td>
+                                                                            <td role="button" data-testid="day-Thu Nov 30 2023"
+                                                                                class="jsx-2353834249 text-center">30</td>
+                                                                            <td role="button" data-testid="day-Fri Dec 01 2023"
+                                                                                class="jsx-2353834249 text-center bg-light text-muted">
+                                                                                1</td>
+                                                                            <td role="button" data-testid="day-Sat Dec 02 2023"
+                                                                                class="jsx-2353834249 text-center bg-light text-muted">
+                                                                                2</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td role="button" data-testid="day-Sun Dec 03 2023"
+                                                                                class="jsx-2353834249 text-center bg-light text-muted">
+                                                                                3</td>
+                                                                            <td role="button" data-testid="day-Mon Dec 04 2023"
+                                                                                class="jsx-2353834249 text-center bg-light text-muted">
+                                                                                4</td>
+                                                                            <td role="button" data-testid="day-Tue Dec 05 2023"
+                                                                                class="jsx-2353834249 text-center bg-light text-muted">
+                                                                                5</td>
+                                                                            <td role="button" data-testid="day-Wed Dec 06 2023"
+                                                                                class="jsx-2353834249 text-center bg-light text-muted">
+                                                                                6</td>
+                                                                            <td role="button" data-testid="day-Thu Dec 07 2023"
+                                                                                class="jsx-2353834249 text-center bg-light text-muted">
+                                                                                7</td>
+                                                                            <td role="button" data-testid="day-Fri Dec 08 2023"
+                                                                                class="jsx-2353834249 text-center bg-light text-muted">
+                                                                                8</td>
+                                                                            <td role="button" data-testid="day-Sat Dec 09 2023"
+                                                                                class="jsx-2353834249 text-center bg-light text-muted">
+                                                                                9</td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                            <footer class="text-center pb-2 pt-1">
+                                                                <div><button type="button"
+                                                                        class="me-2 btn btn-secondary">Today</button><button
+                                                                        type="button"
+                                                                        class="me-2 btn btn-secondary">Clear</button></div>
+                                                            </footer>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div><button class="btn btn-cta-primary mt-3">Select</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3 col-lg-3">
+                            <div class="d-print-none mt-4 pt-1"><button type="button" class="btn btn-cta-secondary">Apply
+                                    Filters</button><button type="button" class="btn btn-link">Clear Filters</button></div>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="d-flex justify-content-start col-3 mt-2">
+                            <div class="form-check form-switch"><input id="show-unread-tasks" type="checkbox"
+                                    class="custom-control-input form-check-input"><label for="show-unread-tasks"
+                                    class="text-nowrap unread-toggle form-check-label ">Show unread tasks only</label></div>
+                        </div>
+                    </div>
+                </div>
+                <fieldset id="mc-table-fieldset">
+                    <div class="d-flex justify-content-between g-0 row ">
+                        <div class="col-9"></div>
+                        <div class="my-2 pe-1 d-flex justify-content-end align-items-center text-nowrap col-3"></div>
+                    </div>
+                    <div data-testid="mc-table-container">
+                        <div class="table-responsive">
+                            <table class="task-list-table table table-sm table-striped table-hover" style="table-layout: auto;">
+                                <colgroup>
+                                    <col style="width: 2rem;">
+                                    <col style="width: 4%;">
+                                    <col style="width: 30%;">
+                                    <col style="width: 5%;">
+                                    <col style="width: 6%;">
+                                    <col style="width: 8%;">
+                                    <col style="width: 15%;">
+                                    <col style="width: 12%;">
+                                    <col style="width: 150px;">
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th class="jsx-208054809 text-center" style="cursor: initial;"><label for="select-all-6"
+                                                class="visually-hidden  form-label">Select all rows</label><input
+                                                type="checkbox" class="mx-1" id="select-all-6"></th>
+                                        <th class="jsx-208054809 task-status-cell align-middle" style="cursor: pointer;">
+                                            STATUS<i aria-hidden="true" class="fa-solid fa-sort fa-fw"></i></th>
+                                        <th class="jsx-208054809 task-name-cell align-middle" style="cursor: pointer;">TASK
+                                            NAME<i aria-hidden="true" class="fa-solid fa-caret-up fa-fw"></i></th>
+                                        <th class="jsx-208054809 task-subtasks-cell align-middle" style="cursor: initial;">
+                                            SUBTASKS</th>
+                                        <th class="jsx-208054809 task-priority-cell align-middle text-nowrap"
+                                            style="cursor: pointer;">PRIORITY<i aria-hidden="true"
+                                                class="fa-solid fa-sort fa-fw"></i></th>
+                                        <th class="jsx-208054809 task-due-cell align-middle" style="cursor: pointer;">DUE<i
+                                                aria-hidden="true" class="fa-solid fa-sort fa-fw"></i></th>
+                                        <th class="jsx-208054809 task-case-lead-cell align-middle" style="cursor: pointer;">
+                                            CASE/LEAD<i aria-hidden="true" class="fa-solid fa-sort fa-fw"></i></th>
+                                        <th class="jsx-208054809 task-assigned-to-cell align-middle" style="cursor: initial;">
+                                            ASSIGNED TO</th>
+                                        <th class="jsx-208054809 task-actions-cell align-middle" style="cursor: initial;"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="">
+                                        <td class="text-center"><label for="select-row-7"
+                                                class="visually-hidden  form-label">Select row</label><input id="select-row-7"
+                                                type="checkbox" class="mx-1"></td>
+                                        <td class="task-status-cell align-middle"><button type="button" id="status-btn-37767731"
+                                                data-testid="task-incomplete" class="p-1 task-incomplete btn btn-link"><i
+                                                    class="fas fa-check fa-2x text-muted"
+                                                    style="opacity: 0.2;"></i></button><span
+                                                class="d-none d-print-inline">Incomplete</span></td>
+                                        <td class="task-name-cell align-middle"><button type="button"
+                                                class="p-0 w-100 text-start
+                      
+                      text-danger btn btn-link">[SAMPLE] Call John Doe Back</button></td><td class="task-subtasks-cell align-middle"><div></div></td><td class="task-priority-cell align-middle text-nowrap"><i class="fas fa-circle fa-sm me-1 text-secondary"></i>Medium</td><td class="task-due-cell align-middle"><span class="fw-bold text-danger">Aug 17, 2023</span></td><td class="task-case-lead-cell align-middle"><a href="/court_cases/28296827">[SAMPLE] John Doe Matter</a></td><td class="task-assigned-to-cell align-middle"><a href="/contacts/attorneys/44846905/info">Robert Zulu</a></td><td class="task-actions-cell align-middle"><div class="actions-cell float-end"><div class="action-buttons d-flex align-items-center task-action-buttons-37767731"><div id="container-table-view-task-time-entries-btn-37767731" class="ms-2"><button type="button" id="table-view-task-time-entries-btn-37767731" data-testid="table-view-task-time-entries-btn-37767731" class="text-black-50 p-0 task-time-entries-btn no-wrap btn btn-link"><i class="far fa-clock " data-testid="table-view-task-time-entries-btn-37767731-icon"></i></button></div><div id="container-table-view-task-reminders-btn-37767731" class="ms-2"><button type="button" id="table-view-task-reminders-btn-37767731" data-testid="table-view-task-reminders-btn-37767731" class="text-black-50 p-0 task-reminder-btn no-wrap btn btn-link"><i class="fas fa-bell " data-testid="table-view-task-reminders-btn-37767731-icon"></i></button></div><div id="container-table-view-edit-task-btn-37767731" class="ms-2"><button type="button" id="table-view-edit-task-btn-37767731" data-testid="table-view-edit-task-btn-37767731" class="text-black-50 p-0 task-edit-btn no-wrap btn btn-link"><i class="fas fa-pen " data-testid="table-view-edit-task-btn-37767731-icon"></i></button></div><div id="container-table-view-delete-task-btn-37767731" class="ms-2"><button type="button" id="table-view-delete-task-btn-37767731" data-testid="table-view-delete-task-btn-37767731" class="text-black-50 p-0 task-delete-btn no-wrap btn btn-link"><i class="fas fa-trash " data-testid="table-view-delete-task-btn-37767731-icon"></i></button></div></div></div></td></tr><tr class=""><td class="text-center"><label for="select-row-8" class="visually-hidden  form-label">Select row</label><input id="select-row-8" type="checkbox" class="mx-1"></td><td class="task-status-cell align-middle"><button type="button" id="status-btn-37767735" data-testid="task-incomplete" class="p-1 task-incomplete btn btn-link"><i class="fas fa-check fa-2x text-muted" style="opacity: 0.2;"></i></button><span class="d-none d-print-inline">Incomplete</span></td><td class="task-name-cell align-middle"><button type="button" class="p-0 w-100 text-start
+                      
+                      text-danger btn btn-link">[SAMPLE] Collect Intake Form</button></td><td class="task-subtasks-cell align-middle"><div></div></td><td class="task-priority-cell align-middle text-nowrap"><i class="fas fa-circle fa-sm me-1 text-secondary"></i>Medium</td><td class="task-due-cell align-middle"><span class="fw-bold text-danger">Aug 24, 2023</span></td><td class="task-case-lead-cell align-middle"><a href="/court_cases/28296828">Potential Case: [SAMPLE] Jane Doe</a></td><td class="task-assigned-to-cell align-middle"><a href="/contacts/attorneys/44846905/info">Robert Zulu</a></td><td class="task-actions-cell align-middle"><div class="actions-cell float-end"><div class="action-buttons d-flex align-items-center task-action-buttons-37767735"><div id="container-table-view-task-reminders-btn-37767735" class="ms-2"><button type="button" id="table-view-task-reminders-btn-37767735" data-testid="table-view-task-reminders-btn-37767735" class="text-black-50 p-0 task-reminder-btn no-wrap btn btn-link"><i class="fas fa-bell " data-testid="table-view-task-reminders-btn-37767735-icon"></i></button></div><div id="container-table-view-edit-task-btn-37767735" class="ms-2"><button type="button" id="table-view-edit-task-btn-37767735" data-testid="table-view-edit-task-btn-37767735" class="text-black-50 p-0 task-edit-btn no-wrap btn btn-link"><i class="fas fa-pen " data-testid="table-view-edit-task-btn-37767735-icon"></i></button></div><div id="container-table-view-delete-task-btn-37767735" class="ms-2"><button type="button" id="table-view-delete-task-btn-37767735" data-testid="table-view-delete-task-btn-37767735" class="text-black-50 p-0 task-delete-btn no-wrap btn btn-link"><i class="fas fa-trash " data-testid="table-view-delete-task-btn-37767735-icon"></i></button></div></div></div></td></tr><tr class=""><td class="text-center"><label for="select-row-9" class="visually-hidden  form-label">Select row</label><input id="select-row-9" type="checkbox" class="mx-1"></td><td class="task-status-cell align-middle"><button type="button" id="status-btn-37767733" data-testid="task-incomplete" class="p-1 task-incomplete btn btn-link"><i class="fas fa-check fa-2x text-muted" style="opacity: 0.2;"></i></button><span class="d-none d-print-inline">Incomplete</span></td><td class="task-name-cell align-middle"><button type="button" class="p-0 w-100 text-start
+                      
+                      text-danger btn btn-link">[SAMPLE] Deadline to Submit Paperwork</button></td><td class="task-subtasks-cell align-middle"><div></div></td><td class="task-priority-cell align-middle text-nowrap"><i class="fas fa-circle fa-sm me-1 text-warning"></i>High</td><td class="task-due-cell align-middle"><span class="fw-bold text-danger">Sep 8, 2023</span></td><td class="task-case-lead-cell align-middle"><a href="/court_cases/28296827">[SAMPLE] John Doe Matter</a></td><td class="task-assigned-to-cell align-middle"><a href="/contacts/attorneys/44846905/info">Robert Zulu</a></td><td class="task-actions-cell align-middle"><div class="actions-cell float-end"><div class="action-buttons d-flex align-items-center task-action-buttons-37767733"><div id="container-table-view-task-time-entries-btn-37767733" class="ms-2"><button type="button" id="table-view-task-time-entries-btn-37767733" data-testid="table-view-task-time-entries-btn-37767733" class="text-black-50 p-0 task-time-entries-btn no-wrap btn btn-link"><i class="far fa-clock " data-testid="table-view-task-time-entries-btn-37767733-icon"></i></button></div><div id="container-table-view-task-reminders-btn-37767733" class="ms-2"><button type="button" id="table-view-task-reminders-btn-37767733" data-testid="table-view-task-reminders-btn-37767733" class="text-black-50 p-0 task-reminder-btn no-wrap btn btn-link"><i class="fas fa-bell " data-testid="table-view-task-reminders-btn-37767733-icon"></i></button></div><div id="container-table-view-edit-task-btn-37767733" class="ms-2"><button type="button" id="table-view-edit-task-btn-37767733" data-testid="table-view-edit-task-btn-37767733" class="text-black-50 p-0 task-edit-btn no-wrap btn btn-link"><i class="fas fa-pen " data-testid="table-view-edit-task-btn-37767733-icon"></i></button></div><div id="container-table-view-delete-task-btn-37767733" class="ms-2"><button type="button" id="table-view-delete-task-btn-37767733" data-testid="table-view-delete-task-btn-37767733" class="text-black-50 p-0 task-delete-btn no-wrap btn btn-link"><i class="fas fa-trash " data-testid="table-view-delete-task-btn-37767733-icon"></i></button></div></div></div></td></tr><tr class=""><td class="text-center"><label for="select-row-10" class="visually-hidden  form-label">Select row</label><input id="select-row-10" type="checkbox" class="mx-1"></td><td class="task-status-cell align-middle"><button type="button" id="status-btn-37767732" data-testid="task-incomplete" class="p-1 task-incomplete btn btn-link"><i class="fas fa-check fa-2x text-muted" style="opacity: 0.2;"></i></button><span class="d-none d-print-inline">Incomplete</span></td><td class="task-name-cell align-middle"><button type="button" class="p-0 w-100 text-start
+                      
+                      text-danger btn btn-link">[SAMPLE] Prepare Docs</button><div class="d-none d-print-inline">Subtasks:<li>Complete - Prepare and Send Client Engagement Letter</li><li>Incomplete - Draft Pleading</li></div></td><td class="task-subtasks-cell align-middle"><div class="d-flex"><div class="recharts-wrapper" style="position: relative; cursor: default; width: 30px; height: 30px;"><svg class="recharts-surface" width="30" height="30" viewBox="0 0 30 30" version="1.1"><defs><clipPath id="recharts3-clip"><rect x="5" y="5" height="20" width="20"></rect></clipPath></defs><g class="recharts-layer recharts-pie"><g class="recharts-layer"><g class="recharts-layer recharts-pie-sector"><path fill="#33658A" stroke="#fff" class="recharts-sector" d="M 15,7
+            A 8,8,0,
+            0,1,
+            15,23
+          L 15,15 Z"></path></g></g></g></svg></div><div class="mt-2">1/2</div></div></td><td class="task-priority-cell align-middle text-nowrap"><i class="fas fa-circle fa-sm me-1 text-warning"></i>High</td><td class="task-due-cell align-middle"><span class="fw-bold text-danger">Aug 31, 2023</span></td><td class="task-case-lead-cell align-middle"><a href="/court_cases/28296827">[SAMPLE] John Doe Matter</a></td><td class="task-assigned-to-cell align-middle"><a href="/contacts/attorneys/44846905/info">Robert Zulu</a></td><td class="task-actions-cell align-middle"><div class="actions-cell float-end"><div class="action-buttons d-flex align-items-center task-action-buttons-37767732"><div id="container-table-view-task-time-entries-btn-37767732" class="ms-2"><button type="button" id="table-view-task-time-entries-btn-37767732" data-testid="table-view-task-time-entries-btn-37767732" class="text-black-50 p-0 task-time-entries-btn no-wrap btn btn-link"><i class="far fa-clock " data-testid="table-view-task-time-entries-btn-37767732-icon"></i></button></div><div id="container-table-view-task-reminders-btn-37767732" class="ms-2"><button type="button" id="table-view-task-reminders-btn-37767732" data-testid="table-view-task-reminders-btn-37767732" class="text-black-50 p-0 task-reminder-btn no-wrap btn btn-link"><i class="fas fa-bell " data-testid="table-view-task-reminders-btn-37767732-icon"></i></button></div><div id="container-table-view-edit-task-btn-37767732" class="ms-2"><button type="button" id="table-view-edit-task-btn-37767732" data-testid="table-view-edit-task-btn-37767732" class="text-black-50 p-0 task-edit-btn no-wrap btn btn-link"><i class="fas fa-pen " data-testid="table-view-edit-task-btn-37767732-icon"></i></button></div><div id="container-table-view-delete-task-btn-37767732" class="ms-2"><button type="button" id="table-view-delete-task-btn-37767732" data-testid="table-view-delete-task-btn-37767732" class="text-black-50 p-0 task-delete-btn no-wrap btn btn-link"><i class="fas fa-trash " data-testid="table-view-delete-task-btn-37767732-icon"></i></button></div></div></div></td></tr></tbody></table></div></div></fieldset><div class="mc-paginator d-print-none d-flex align-items-center px-4 mb-3"><div class="mc-per-page-selector ms-auto d-flex align-items-center"><label for="rows-per-page" class="me-2 mb-0 text-nowrap  form-label">Rows Per Page:</label><select id="rows-per-page" name="per_page" data-testid="rows-per-page" class="w-auto form-select"><option value="5">5</option><option value="10" selected="">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select></div></div></div></div>
+            </div>
+
+
+
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"></script>
+  
+</body>
+</html>
